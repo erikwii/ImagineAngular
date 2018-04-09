@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app='myapp'>
+<head>
+	<title>Pegenalan Dan Cara Menggunakan AngularJS | MalasNgoding.com</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+	<div class="container mt-5" ng-controller='data'>
+		<div class="row">
+			<div class="col-12">
+				<h1 class="text-danger">AngularJS</h1>
+			</div>
+			<div class="col-12 mt-5">
+				<input type="text" name=" filter" placeholder="search" ng-model="result">
+			</div>
+		</div>
+		<div class="row my-3">
+			<div class="col-3" ng-repeat="dn in data | filter:result | orderBy:'nama'">
+				<div class="card container py-3">
+					<h3>{{dn.nama}}</h3>
+					<p>{{dn.kota}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	/*Declare Angular Module*/
+	var test = angular.module('myapp',[]);
+	
+	/*Controller Angular (can place to other file)*/
+	test.controller('data', function($scope) {
+		$scope.data = [
+				{nama:'Erik',kota:'Jakarta'},
+				{nama:'Firdaus',kota:'Jember'},
+				{nama:'Firly',kota:'Bandung'},
+				{nama:'Eqi',kota:'Banten'}];
+	});
+</script>
+</html>
